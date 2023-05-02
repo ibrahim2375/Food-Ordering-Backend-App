@@ -33,23 +33,23 @@ export interface Order{
     totalPrice:number;
     name: string;
     address: string;
-    addressLatLng:LatLng
+    addressLatLng:LatLng;
     paymentId: string;
     status: string;
     user: Types.ObjectId;
     createdAt: Date;
-    updatedAt: Date
+    updatedAt: Date;
 }
 
 const orderSchema = new Schema<Order>({
     name: {type: String, required: true},
     address: {type: String, required: true},
-    addressLatLng: {type: LatLngSchema, required: true},
+    addressLatLng: {type: LatLngSchema},
     paymentId: {type: String},
     totalPrice: {type: Number, required: true},
     items: {type: [OrderItemSchema], required: true},
-    status: {type: String, default: 'new'},
-    user: {type: Schema.Types.ObjectId, required: true}
+    status: {type: String},
+    user: {type: Schema.Types.ObjectId}
 },{
     timestamps: true,
     toJSON:{
@@ -60,4 +60,4 @@ const orderSchema = new Schema<Order>({
     }
 });
 
-export const OrderModel = model('order', orderSchema);
+export const OrderModel = model<Order>('order', orderSchema);

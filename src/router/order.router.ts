@@ -24,7 +24,7 @@ AsyncHandler(async (req:any, res:any) => {
 
     const newOrder = new OrderModel({...requestOrder,user: req.user.id});
     await newOrder.save();
-    res.send(newOrder);
+    res.status(200).send(newOrder);
 })
 )
 

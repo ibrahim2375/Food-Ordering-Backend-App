@@ -17,8 +17,17 @@ router.post('/login',AsyncHandler(
                     if (!checked) { return res.status(400).send("incorrect password") }
                     //if its ok create token
                     const token = jwt.sign({email: email, isAdmin:user.isAdmin},process.env.SECRET_JWT!,{expiresIn:"10d"});
-                    user.token = token;
-                    return res.status(200).send(user);
+                    // user.token = token;
+                   //generate data
+                    const userData = {
+                        id: user.id,
+                        email: user.email,
+                        name: user.name,
+                        address: user.address,
+                        isAdmin: user.isAdmin,
+                        token: token
+                    };
+                    return res.status(200).send(userData);
                 })
             }else {
                 //if somthing wrong with password or user
