@@ -6,6 +6,7 @@ import { dbConnect } from './config/db.config';
 //router path
 import foodsRouter from './router/foods.router'
 import usersRouter from './router/users.router'
+import orderRouter from './router/order.router'
 //seed router path to create bunch of data inside cluster
 import foodSeedRouter from './seed/food.seed'
 import userSeedRouter from './seed/user.seed'
@@ -24,6 +25,7 @@ app.use(cors({
 //router api
 app.use('/api/foods',foodsRouter);
 app.use('/api/users',usersRouter);
+app.use('/api/orders',orderRouter);
 //seed
 app.use('/api/seed',foodSeedRouter);
 app.use('/api/seed',userSeedRouter);
