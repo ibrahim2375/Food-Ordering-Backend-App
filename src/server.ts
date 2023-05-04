@@ -17,6 +17,7 @@ const app = express();
 const PORT = 5000 || process.env.PORT;
 const HOST = 'localhost' || process.env.HOST;
 //middlewares
+app.use(express.static('public'))
 app.use(express.json())
 app.use(cors({
     credentials:true,
