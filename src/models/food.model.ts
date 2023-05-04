@@ -7,6 +7,7 @@ export interface Food{
     tags: string[];
     favorite:boolean;
     stars: number;
+    views: number;
     imageUrl: string;
     origins: string[];
     cookTime:string;
@@ -33,6 +34,10 @@ export const FoodSchema = new Schema<Food>({
     stars: {
         type:Number,
         required:true
+    },
+    views: {
+        type:Number,
+        default: 0,
     },
     imageUrl:  {
         type:String,

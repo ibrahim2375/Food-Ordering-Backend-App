@@ -17,4 +17,11 @@ router.get('/users', AsyncHandler(
     }
 ))
 
+//delete data to cluster 
+router.get('/users/delete-all', AsyncHandler(
+    async (req, res) => {
+        await UserModel.deleteMany();
+        res.send('Users deleted Done!');
+    }
+))
 export default router;
