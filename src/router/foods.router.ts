@@ -89,5 +89,20 @@ router.get('/:id',AsyncHandler(
         });
     }
 ))
+//get most viewd
+router.get('/most-views', AsyncHandler( 
+    async (req, res) => {
+        await  FoodModel.find().sort({ views: -1 }).limit(20).then((result) => {
+                if (!result) {
+                    return res.status(403).send('somthing wrong');
+                }
+                //get most views
+                return res.status(200).send(result);
+            
+        }).catch((error) => {
+                return res.status(403).send(error);
+        });
+    }
+));
 
 export default router;
